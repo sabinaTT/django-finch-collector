@@ -13,3 +13,9 @@ class Home(TemplateView):
         # Here we are returning a generic response
         # This is similar to response.send() in express
         # return HttpResponse("Finch Home")
+
+class About(TemplateView):
+    template_name = "about.html"
+
+class Index(TemplateView):
+    template_name = "index.html"
