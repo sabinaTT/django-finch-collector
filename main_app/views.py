@@ -20,3 +20,23 @@ class About(TemplateView):
 
 class Index(TemplateView):
     template_name = "index.html"
+
+class Finch:
+    def __init__(self, name, age, family):
+        self.name = name 
+        self.age = age
+        self.family = family
+
+finches = [
+    Finch('Julia', 12, 'Estrildidae'),
+    Finch('Sergius', 3, 'Estrildidae'),
+]
+
+class Finch_List(TemplateView):
+    template_name = "finch_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['finches'] = finches
+
+        return context

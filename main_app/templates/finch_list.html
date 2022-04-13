@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Finches:</h1>
+    {% for finch in finches %}
+    <h3>Name: {{ finch.name }}</h3>
+    <h3>Age: {{ finch.age }}</h3>
+    <h3>Family: {{ finch.family}}</h3>
+    {% endfor %}
+{% endblock %}
