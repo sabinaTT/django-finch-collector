@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
 {% block content %}
+    <form>
+        <div>
+            <input type="text" name="name" placeholder="name" />
+            <input type="submit" value="Search" />
+        </div>
+        <a href="{% url 'finch_list' %}">Clear Search</a>
+    </form>
     <h1>Finches:</h1>
     {% for finch in finches %}
     <h3>Name: {{ finch.name }}</h3>
