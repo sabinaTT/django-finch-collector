@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %} 
+    <h1>Birdhouse Details</h1>
+    <div>
+        <div>
+            <span>{{ birdhouse.name }}</span>
+            <p>Size: {{ birdhouse.size }}</p>
+            <p>Color: {{ birdhouse.color }}</p>
+        </div>
+        <div>
+            <a href='{% url "birdhouses_update" birdhouse.id %}'>Edit</a>
+            <a href='{% url "birdhouses_delete" birdhouse.id %}'>Delete</a>
+        </div>
+    </div>
+{% endblock %}

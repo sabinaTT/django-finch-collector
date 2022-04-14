@@ -100,3 +100,4 @@ class BirdHouseDelete(DeleteView):
     model = BirdHouse
     template_name = 'birdhouse_confirm_delete.html'
     success_url = '/birdhouses'
+
