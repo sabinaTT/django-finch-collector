@@ -3,8 +3,9 @@ from django.views import View # View class to handle requests
 from django.http import HttpResponse # a class to handle sending a type of response
 from django.views.generic.base import TemplateView
 from .models import Finch
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
+from django.urls import reverse
 
 # Create your views here.
 
@@ -42,8 +43,18 @@ class Finch_Create(CreateView):
     model = Finch
     fields = ['name', 'img', 'age', 'family']
     template_name = 'finch_create.html'
-    success_url = '/finches/'
+    # success_url = '/finches/'
+    def get_success_url(self):
+        return reverse('finch_detail', kwargs={'pk': self.object.pk})
 
 class Finch_Detail(DetailView):
     model = Finch
     template_name = 'finch_detail.html'
+
+class Finch_Update(UpdateView):
+    model = Finch
+    fields = ['name', 'img', 'age', 'family']
+    template_name = 'finch_update.html'
+    # success_url = '/finches'
+    def get_success_url(self):
+        return reverse('finch_detail', kwargs={'pk': self.object.pk})
