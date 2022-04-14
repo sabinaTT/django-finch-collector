@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View # View class to handle requests
 from django.http import HttpResponse # a class to handle sending a type of response
 from django.views.generic.base import TemplateView
-from .models import Finch
+from .models import Finch, BirdHouse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -75,3 +75,28 @@ def profile(request, username):
     user = User.objects.get(username=username)
     finches = Finch.objects.filter(user=user)
     return render(request, 'profile.html', {'username': username, 'finches': finches })
+
+def birdhouses_index(request):
+    birdhouses = BirdHouse.objects.all()
+    return render(request, 'birdhouse_index.html', {'birdhouses': birdhouses})
+
+def birdhouses_show(request, birdhouse_id):
+    birdhouse = BirdHouse.objects.get(id=birdhouse_id)
+    return render(request, 'birdhouse_show.html', {'birdhouse': birdhouse})
+
+class BirdHouseCreate(CreateView):
+    model = BirdHouse
+    fields = '__all__'
+    template_name = 'birdhouse_form.html'
+    success_url = '/birdhouses'
+
+class BirdHouseUpdate(UpdateView):
+    model = BirdHouse
+    fields = ['name', 'size', 'color']
+    template_name = 'birdhouse_update.html'
+    success_url = '/birdhouses'
+
+class BirdHouseDelete(DeleteView):
+    model = BirdHouse
+    template_name = 'birdhouse_confirm_delete.html'
+    success_url = '/birdhouses'

@@ -12,5 +12,11 @@ urlpatterns = [
     path('finches/<int:pk>/update', views.Finch_Update.as_view(), name='finch_update'),
     path('finches/<int:pk>/delete', views.Finch_Delete.as_view(), name='finch_delete'),
     path('user/<username>', views.profile, name='profile'),
+    path('birdhouses/', views.birdhouses_index, name='birdhouses_index'),
+    # path('birdhouses/<int:birdhouse_id>', views.birdhouses_show, name='birdhouses_show'), 
+    # path('birdhouses/create', views.BirdHouseCreate.as_view(), name='birdhouses_create'),
+    # path('birdhouses/<int:pk>/update/', views.BirdHouseUpdate.as_view(), name='birdhouses_update'),
+    # path('birdhouses/<int:pk>/delete/', views.BirdHouseDelete.as_view(), name='birdhouses_delete'),
+
     
 ]
