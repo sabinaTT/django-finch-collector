@@ -62,5 +62,5 @@ class Finch_Update(UpdateView):
 
 class Finch_Delete(DeleteView):
     model = Finch
-    template_name = 'finch_delete.html'
+    template_name = 'finch_delete_confirmation.html'
     success_url = '/finches/'
