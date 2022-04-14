@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+
+{% block title %}
+    Finch List
+{% endblock %}
 {% block content %}
     <form>
         <div>
@@ -16,5 +20,8 @@
     </a>
     <h3>Age: {{ finch.age }}</h3>
     <h3>Family: {{ finch.family }}</h3>
+    <p>Adopted By:
+        <a href='/user/{{finch.user.username}}'>{{finch.user.username}}</a>
+    </p>
     {% endfor %}
 {% endblock %}
