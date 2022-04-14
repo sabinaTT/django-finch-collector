@@ -6,6 +6,7 @@
             <input type="submit" value="Search" />
         </div>
         <a href="{% url 'finch_list' %}">Clear Search</a>
+        <a href='{% url "finch_create" %}'>Add Finch</a>
     </form>
     <h1>{{ header }}</h1>
     {% for finch in finches %}

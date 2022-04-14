@@ -3,6 +3,7 @@ from django.views import View # View class to handle requests
 from django.http import HttpResponse # a class to handle sending a type of response
 from django.views.generic.base import TemplateView
 from .models import Finch
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -35,3 +36,11 @@ class Finch_List(TemplateView):
             context['header'] = 'Finches'
 
         return context
+
+class Finch_Create(CreateView):
+    model = Finch
+    fields = ['name', 'img', 'age', 'family']
+    template_name = 'finch_create.html'
+    success_url = '/finches/'
+
+
