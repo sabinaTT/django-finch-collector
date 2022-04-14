@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -69,3 +70,8 @@ class Finch_Delete(DeleteView):
     model = Finch
     template_name = 'finch_delete_confirmation.html'
     success_url = '/finches/'
+
+def profile(request, username):
+    user = User.objects.get(username=username)
+    finches = Finch.objects.filter(user=user)
+    return render(request, 'profile.html', {'username': username, 'finches': finches })
