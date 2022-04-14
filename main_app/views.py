@@ -6,6 +6,7 @@ from .models import Finch
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -42,11 +43,15 @@ class Finch_List(TemplateView):
 
 class Finch_Create(CreateView):
     model = Finch
-    fields = ['name', 'img', 'age', 'family']
-    template_name = 'finch_create.html'
-    # success_url = '/finches/'
-    def get_success_url(self):
-        return reverse('finch_detail', kwargs={'pk': self.object.pk})
+    fields = '__all__'
+    # template_name = 'finch_create.html'
+    success_url = '/finches/'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect('/finches')
 
 class Finch_Detail(DetailView):
     model = Finch
