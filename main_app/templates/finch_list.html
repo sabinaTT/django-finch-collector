@@ -11,7 +11,9 @@
     <h1>{{ header }}</h1>
     {% for finch in finches %}
     <img src="{{ finch.img }}" alt="{{ finch.name }}" />
-    <h3>Name: {{ finch.name }}</h3>
+    <a href='{% url "finch_detail" finch.pk %}'>
+        <h3>Name: {{ finch.name }}</h3>
+    </a>
     <h3>Age: {{ finch.age }}</h3>
     <h3>Family: {{ finch.family }}</h3>
     {% endfor %}
