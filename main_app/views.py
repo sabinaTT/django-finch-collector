@@ -45,7 +45,7 @@ class Finch_List(TemplateView):
 class Finch_Create(CreateView):
     model = Finch
     fields = '__all__'
-    # template_name = 'finch_create.html'
+    template_name = 'finch_create.html'
     success_url = '/finches/'
 
     def form_valid(self, form):
@@ -60,7 +60,7 @@ class Finch_Detail(DetailView):
 
 class Finch_Update(UpdateView):
     model = Finch
-    fields = ['name', 'img', 'age', 'family']
+    fields = ['name', 'img', 'age', 'family', 'birdhouses']
     template_name = 'finch_update.html'
     # success_url = '/finches'
     def get_success_url(self):

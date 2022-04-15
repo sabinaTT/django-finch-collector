@@ -3,13 +3,13 @@
     <h1>Birdhouse List</h1>
     {% for birdhouse in birdhouses %}
     <div>
-        <a href='{% url "birdhouses_show" birdhouse.id%}'>
+        <a href='{% url "birdhouses_show" birdhouse.id%}'>       
             <div class='card-content'>
                 <span>{{ birdhouse.name }}</span>
+        </a>
                 <p>Size: {{ birdhouse.size }}</p>
                 <p>Color: {{ birdhouse.color }}</p>
             </div>
-        </a>
     </div>
     {% endfor %}
 {% endblock %}
