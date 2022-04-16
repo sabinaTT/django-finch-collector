@@ -10,6 +10,7 @@
 <div>
     <h3>Age: {{ finch.age }}</h3>
     <h3>Family: {{ finch.family }}</h3>
+    <h3>Birdhouse: {{ finch.birdhouses.name }}</h3>
 </div>
 <div>
     <a href='{% url "finch_update" finch.pk %}'>Update</a>
